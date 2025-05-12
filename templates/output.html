@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Output Database</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styless.css') }}"
+    />
+  </head>
+  <body>
+    <h1>Calculation History</h1>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>j</th>
+          <th>Result</th>
+          <th>Time Taken (seconds)</th>
+          <th>Method Used</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for calculation in calculations %}
+        <tr>
+          <td>{{ calculation[1] }}</td>
+          <td>{{ calculation[2] }}</td>
+          <td>{{ calculation[3] }}</td>
+          <td>{{ calculation[4] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <br />
+    <a href="{{ url_for('index') }}">Back to Home</a>
+  </body>
+</html>

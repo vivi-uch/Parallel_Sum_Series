@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculation Result</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Calculation Result</h1>
+
+      {% if result is not none %}
+      <div class="result-box">
+        <p><strong>Result:</strong> {{ result }}</p>
+        <p><strong>Time Taken:</strong> {{ time_taken }} seconds</p>
+      </div>
+      {% endif %}
+
+      <form action="/" method="post" class="form-box">
+        <label for="j">Enter the value of j:</label>
+        <input type="number" name="j" required />
+
+        <label for="method">Choose the method:</label>
+        <select name="method" required>
+          <option value="single">Single Thread</option>
+          <option value="multithread">Multithread</option>
+          <option value="multiprocessing">Multiprocessing</option>
+          <option value="single_processor">Single Processor</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+      </form>
+
+      <div class="nav-link">
+        <a href="{{ url_for('output') }}"
+          >Click here to see the calculation history</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
